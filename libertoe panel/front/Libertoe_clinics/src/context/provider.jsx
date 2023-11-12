@@ -5,8 +5,12 @@ export const UserContext = createContext();
 const MyProvider = ({ children }) => {
   const mainUrl = "http://localhost:5173"
 
+  // uses in all pages
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userData, setUserData] = useState({})
+
+  // home page => menu
+  const [selectedMenu, setSelectedMenu] = useState("orders")
 
   return (
     <UserContext.Provider
@@ -14,6 +18,7 @@ const MyProvider = ({ children }) => {
         mainUrl,
         userData, setUserData,
         isLoggedIn, setIsLoggedIn,
+        selectedMenu, setSelectedMenu,
       }}
     >
       {children}

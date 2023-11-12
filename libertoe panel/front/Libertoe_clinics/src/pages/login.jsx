@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/img/libertoe-logo-C.png";
 import { UserContext } from "../context/provider";
 import { netCall } from "../lib/netcall";
@@ -10,6 +11,8 @@ const LoginPage = () => {
   const [userName, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
+  const navigate = useNavigate()
+
   const submit = async () =>{
     const body = {email: userName, password: password}
     const responce = await netCall("login", "post", body)
@@ -18,12 +21,13 @@ const LoginPage = () => {
       localStorage.setItem("token", responce.data.token)
       setUserData(responce.data)
       setIsLoggedIn(true)
+      navigate("/")
     }
 
   }
   return (
     <>
-      <div className="w-full h-full flex flex-col justify-center items-center">
+      <div className="w-full h-full flex flex-col justify-center items-center font-[vazir]">
         <div className="flex justify-center items-end w-1/2" >
           <img className="max-w-96 w-1/2 min-w-[200px]" src={logo} />
           <p className="text-2xl text-[#017067] " >Seller</p>
@@ -40,7 +44,7 @@ const LoginPage = () => {
             </div>
           </div>
           <div className=" w-[80%] " >
-            <button onClick={() => submit()} className=" w-full h-8 rounded-lg border bg-[#017067] text-white " >ورود</button>
+            <button onClick={() => submit()} className=" w-full h-8 rounded-lg border bg-[#017067] hover:bg-[#008177] text-white " >ورود</button>
           </div>
         </div>
       </div>
