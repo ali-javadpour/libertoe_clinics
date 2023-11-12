@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'iransans';
+  src: local('iransans'),
+       url('./assets/fonts/Iranian_Sans.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'aviny';
+  src: local('aviny'),
+       url('./assets/fonts/aviny.woff') format('woff');
+}
+@font-face {
+  font-family: 'iransans';
+  src: url('./assets/fonts/Iranian_Sans.ttf');
+  font-weight: 400;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'vazir';
+  src: url('./assets/fonts/vazir/Vazir-Bold.ttf');
+  src: url('./assets/fonts/vazir/Vazir-Light.ttf');
+  src: url('./assets/fonts/vazir/Vazir-Medium.ttf');
+  src: url('./assets/fonts/vazir/Vazir-Thin.ttf');
+  src: url('./assets/fonts/vazir/Vazir.ttf');
+  font-weight: 400;
+  font-style: normal;
+  }
+
 :root {
   margin: 0;
   padding: 0;
@@ -22,6 +49,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: vazir;
 }
 /* 
 a {
