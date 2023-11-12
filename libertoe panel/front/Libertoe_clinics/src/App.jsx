@@ -12,9 +12,12 @@ import LoginPage from './pages/login';
 import { useContext } from 'react';
 import { UserContext } from './context/provider';
 import { netCall } from './lib/netcall';
+import HomePage from './pages/Home';
 
 function App() {
   const {isLoggedIn, setIsLoggedIn, setUserData} = useContext(UserContext);
+
+  const navigate = useNavigate()
 
   useEffect(()=>{
     async function authenticate(){
@@ -24,7 +27,12 @@ function App() {
         if(res.status === 200){
           setIsLoggedIn(true)
           setUserData(res.data)
+          navigate("/")
+        }else{
+          navigate("/login")
         }
+      }else{
+        navigate("/login")
       }
     }
     authenticate()
@@ -34,7 +42,7 @@ function App() {
     <>
       <Routes>
         {isLoggedIn && (
-          <Route path="/" element={<p>Home page</p>} />
+          <Route path="/" element={<HomePage/>} />
         )}
         {isLoggedIn && (
           <Route path="/profile" element={<p>profile page</p>} />
@@ -43,12 +51,8 @@ function App() {
         {!isLoggedIn && (
           <Route path="/login" element={<LoginPage/>} />
         )}
-        {isLoggedIn && (
-          <Route path="*" element={<p>Home page</p>} />
-        )}
-        {!isLoggedIn && (
-          <Route path="*" element={<LoginPage/>} />
-        )}
+        {isLoggedIn && navigate("/")}
+        {!isLoggedIn && navigate("/login")}
       </Routes>
     </>
   )
