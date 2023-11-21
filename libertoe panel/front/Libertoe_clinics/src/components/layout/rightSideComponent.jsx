@@ -3,7 +3,7 @@ import profileImg from "../../assets/img/profile.jpg";
 import { UserContext } from "../../context/provider";
 
 const RightSideComponent = () => {
-  const { selectedMenu, setSelectedMenu } = useContext(UserContext);
+  const { selectedMenu, setSelectedMenu, userData } = useContext(UserContext);
 
   const selectedStyle = {
     backgroundColor: "white",
@@ -17,7 +17,7 @@ const RightSideComponent = () => {
       <div className=" w-full flex flex-col gap-16 ">
         <div className=" w-full flex flex-col items-center gap-3 ">
           <img src={profileImg} className=" rounded-full w-1/2 " />
-          <h1 className=" text-xl ">کلینیک عسمران</h1>
+          <h1 className=" text-xl ">{userData.name}</h1>
         </div>
         <div className="w-full flex flex-col items-center gap-7 ">
           <p

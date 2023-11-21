@@ -3,8 +3,8 @@ import axios from 'axios';
 
 export const netCall = (url, method, body) => {
 
-    // const apiUrl = "https://api.libertoe.ir/"
-    const apiUrl = "http://localhost:8080/"
+    const apiUrl = "https://api.libertoe.ir/"
+    // const apiUrl = "http://localhost:8080/"
 
   return new Promise((resolve, reject) => {
     (async () => {
