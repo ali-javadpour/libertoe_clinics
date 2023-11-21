@@ -5,6 +5,11 @@ export const UserContext = createContext();
 const MyProvider = ({ children }) => {
   const mainUrl = "http://localhost:5173"
 
+  const [allOrders, setAllOrders] = useState([])
+  const [selectedOrder, setSelectedOrder] = useState(0)
+  const [allProducts, setAllProducts] = useState([])
+  const [productsForOrders, setProductsForOrders] = useState([])
+
   // uses in all pages
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userData, setUserData] = useState({})
@@ -19,6 +24,10 @@ const MyProvider = ({ children }) => {
         userData, setUserData,
         isLoggedIn, setIsLoggedIn,
         selectedMenu, setSelectedMenu,
+        allProducts, setAllProducts,
+        allOrders, setAllOrders,
+        selectedOrder, setSelectedOrder,
+        productsForOrders, setProductsForOrders,
       }}
     >
       {children}

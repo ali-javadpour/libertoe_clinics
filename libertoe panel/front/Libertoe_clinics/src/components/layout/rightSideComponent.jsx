@@ -27,13 +27,13 @@ const RightSideComponent = () => {
           >
             پروفایل
           </p>
-          <p
+          {/* <p
             className="px-5 py-[10px] cursor-pointer duration-200 ease-linear text-xl "
             style={selectedMenu === "newOrder" ? selectedStyle : {}}
             onClick={() => setSelectedMenu("newOrder")}
           >
             ثبت سفارش
-          </p>
+          </p> */}
           <p
             className="px-5 py-[10px] cursor-pointer duration-200 ease-linear text-xl "
             style={selectedMenu === "orders" ? selectedStyle : {}}

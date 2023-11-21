@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const netCall = (url, method, body) => {
 
+    // const apiUrl = "https://api.libertoe.ir/"
     const apiUrl = "http://localhost:8080/"
 
   return new Promise((resolve, reject) => {
@@ -67,3 +68,20 @@ export const netCall = (url, method, body) => {
     })();
   });
 };
+
+export const getProducts = async ()=>{
+    const res = await axios({
+        method: "get",
+        url: "https://libertoe.ir/wp-json/wc/v3/products?per_page=100",
+        headers: {
+          // "Cache-Control": "no-cache",
+          // "Content-Type": "application/json",
+          "Authorization": "Basic Y2tfMjcyZTA3MTFmMTZhOGM0YTQwNzVlYTkzMTVkMTYyMWI0YWYxMmYwNjpjc184Y2I0ODVkZWViZmJhN2RjY2EwZDNiN2Q4NTcwNTE2YzYwYjI1ODdh",
+        },
+        // data: body,
+        //params: JSON.stringify(args)
+        //data: bodyPreparer(args)
+      });
+      console.log(res);
+      return res
+}

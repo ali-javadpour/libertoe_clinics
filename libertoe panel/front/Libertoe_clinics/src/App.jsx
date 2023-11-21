@@ -11,11 +11,11 @@ import {
 import LoginPage from './pages/login';
 import { useContext } from 'react';
 import { UserContext } from './context/provider';
-import { netCall } from './lib/netcall';
+import { getProducts, netCall } from './lib/netcall';
 import HomePage from './pages/Home';
 
 function App() {
-  const {isLoggedIn, setIsLoggedIn, setUserData} = useContext(UserContext);
+  const {isLoggedIn, setIsLoggedIn, setUserData, allProducts, setAllProducts} = useContext(UserContext);
 
   const navigate = useNavigate()
 
@@ -35,7 +35,15 @@ function App() {
         navigate("/login")
       }
     }
+
+    const getAllProducts = async () => {
+      const allProducts = await getProducts()
+      setAllProducts(allProducts.data)
+    }
+
     authenticate()
+    getAllProducts()
+
   },[])
 
   return (
